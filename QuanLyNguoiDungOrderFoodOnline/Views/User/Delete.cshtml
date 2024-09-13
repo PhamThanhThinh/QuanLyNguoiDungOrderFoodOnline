@@ -1,0 +1,48 @@
+﻿@model QuanLyNguoiDungOrderFoodOnline.Models.UserViewModel
+@{
+  ViewData["Title"] = "Xóa Người Dùng";
+  var errorMessage = TempData["errorMessage"]?.ToString();
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+  <div class="alert alert-danger">
+    <strong>Error: </strong>@errorMessage
+    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+}
+<form action="Delete" method="post">
+  <div class="mb-3">
+    <label class="form-label">Id</label>
+    <input type="text" class="form-control" asp-for="Id" readonly="@(true)" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Tên</label>
+    <input type="text" class="form-control" asp-for="FirstName" readonly="@(true)" />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Họ</label>
+    <input type="text" class="form-control" asp-for="LastName" readonly="@(true)" />
+    <span asp-validation-for="LastName" class="text-danger"></span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Ngày sinh</label>
+    <input type="date" class="form-control" asp-for="DateOfBirth" readonly="@(true)" />
+    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Địa chỉ email</label>
+    <input type="text" class="form-control" asp-for="Email" readonly="@(true)" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Coin</label>
+    <input type="text" class="form-control" asp-for="Coin" readonly="@(true)" />
+    <span asp-validation-for="Coin" class="text-danger"></span>
+  </div>
+  <div class="d-grid">
+    <button type="submit" class="btn btn-primary" onclick="return function('Bạn có chắc là bạn muốn xóa luôn không?')">Xóa</button>
+  </div>
+</form>
